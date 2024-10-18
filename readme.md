@@ -66,11 +66,11 @@ obj.submit_sh("sample")
 
 実行後ファイル構成例:
 ```
-path/to/dir/
-    sample.sh
-    output/
-        sample.sh.1234567.err
-        sample.sh.1234567.out
+path/to/dir
+    ├sample.sh
+    └output
+        ├sample.sh.1234567.err
+        └sample.sh.1234567.out
 ```
 
 
