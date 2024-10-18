@@ -1,6 +1,6 @@
-# SlurmSH
+# SlurmSh
 
-SlurmSHは、Slurmジョブスケジューラ用のシェルスクリプト(.shファイル)を生成および提出するためのPythonモジュールです。
+SlurmShは、Slurmジョブスケジューラ用のシェルスクリプト(.shファイル)を生成および提出するためのPythonモジュールです。
 
 ## インストール
 
