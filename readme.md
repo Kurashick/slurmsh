@@ -10,13 +10,13 @@ SlurmShは、Slurmジョブスケジューラ用のシェルスクリプト(.sh�
 
 ### 1. 初期化
 
-まず、`SlurmSh`クラスのインスタンスを作成します。引数にはシェルスクリプトを保存するディレクトリのパスを指定します。
+まず、`SlurmSh`クラスのインスタンスを作成します。引数にはシェルスクリプトを保存するディレクトリのパスおよびシェルスクリプトの名前を指定します。
 
 ```python
 from slurmsh import SlurmSh
 
 path = "path/to/dir"
-obj = SlurmSh(path)
+obj = SlurmSh(path,filename)
 ```
 
 ### 2. Slurmオプションの設定
@@ -37,10 +37,10 @@ obj.set_command("set -x","srun ./a.out")
 
 ### 4. シェルスクリプトの作成と提出
 
-`submit_sh`メソッドを使用して、シェルスクリプトを作成し、それをSlurmに提出します。引数にはシェルスクリプトのファイル名(.sh抜き)を指定します。
+`submit_sh`メソッドを使用して、シェルスクリプトを作成し、それをSlurmに提出します。
 
 ```python
-obj.submit_sh("shellscript")
+obj.submit_sh()
 ```
 
 ## 出力ファイル
@@ -57,11 +57,10 @@ obj.submit_sh("shellscript")
 from slurmsh import SlurmSh
 
 path = "path/to/dir"
-obj = SlurmSh(path)
-
+obj = SlurmSh(path,"sample")
 obj.set_batch(p="gr19999b", t="12:00:00", rsc='p=4:t=8:c=8:m=8G')
 obj.set_command("set -x","srun ./a.out")
-obj.submit_sh("sample")
+obj.submit_sh()
 ```
 
 実行後ファイル構成例:
