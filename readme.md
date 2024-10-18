@@ -54,7 +54,7 @@ obj.submit_sh("shellscript")
 以下は、`sample.py`ファイルのサンプルコードです。
 
 ```python
-from slurmsh.slurmsh import SlurmSh
+from slurmsh import SlurmSh
 
 path = "path/to/dir"
 obj = SlurmSh(path)
