@@ -13,7 +13,7 @@ SlurmSHは、Slurmジョブスケジューラ用のシェルスクリプト(.sh�
 まず、`SlurmSh`クラスのインスタンスを作成します。引数にはシェルスクリプトを保存するディレクトリのパスを指定します。
 
 ```python
-from slurmsh.slurmsh import SlurmSh
+from slurmsh import SlurmSh
 
 path = "path/to/dir"
 obj = SlurmSh(path)
