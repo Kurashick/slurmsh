@@ -11,15 +11,17 @@ from subprocess import check_call
 class SlurmSh:
     """Slurm提出用のシェルスクリプト(.sh)を扱うクラス."""
     
-    def __init__(self,dir):
+    def __init__(self,dir,filename):
         """
         初期化.
         引数にはシェルスクリプトを保存するディレクトリを指定する.
         このとき、ディレクトリ内に"outdir"ディレクトリが存在しない場合は作成する.
+        引数にはファイル名を指定する.
         """
         self.batch=["#!/bin/bash","#============ Slurm Options ==========="]
         self.command=["","#============ Shell Script ============"]
         self.dir=dir
+        self.filename=filename
         self.outdir=dir+"/output"
         if not os.path.exists(self.outdir):
             os.makedirs(self.outdir)
@@ -60,22 +62,20 @@ class SlurmSh:
         lines.append(comment)
         return lines
 
-    def make_sh(self,filename):
+    def make_sh(self):
         """
         シェルスクリプトを作成する.
-        引数にはファイル名を指定する.
         """
         lines=self.make_list()
-        self.path=self.dir+"/"+filename+'.sh'
+        self.path=self.dir+"/"+self.filename+'.sh'
         with open(self.path, mode='w') as f:
             f.write('\n'.join(lines))
     
-    def submit_sh(self,filename):
+    def submit_sh(self):
         """
         シェルスクリプトを作成して提出する.
-        引数にはファイル名を指定する.
         """
-        self.make_sh(filename)
+        self.make_sh()
         cmd='sbatch ' + self.path
         check_call(cmd.split())
 
